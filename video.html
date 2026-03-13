@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIDEO - B-Media</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f2f5;
+        padding: 30px;
+        text-align: center;
+        margin: 0;
+    }
+    header, footer {
+        background-color: #0d6efd;
+        color: white;
+        padding: 15px 0;
+    }
+    header .logo {
+        font-weight: bold;
+        font-size: 24px;
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    h2 {
+        color: #0d6efd;
+        margin-bottom: 20px;
+    }
+    select {
+        padding: 8px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    video {
+        width: 100%;
+        max-width: 600px;
+        margin-top: 10px;
+        border: 2px solid #0d6efd;
+        border-radius: 5px;
+    }
+    table {
+        width: 80%;
+        margin: 30px auto;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+    th {
+        background-color: #0d6efd;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MonProjet</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="modules.html">Actions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<h2>Lecture Vidéo B-Media</h2>
+
+<label for="videoSelect">Sélectionnez une vidéo :</label><br>
+<select id="videoSelect">
+    <option value="1.mp4">Vidéo 1</option>
+    <option value="11.mp4">Vidéo 2</option>
+    <option value="111.mp4">Vidéo 3</option>
+</select>
+
+<div style="margin-top:20px;">
+    <video id="videoPlayer" controls>
+        <source src="1.mp4" type="video/mp4">
+       
+    </video>
+</div>
+
+<h3 style="margin-top:40px;">Liste complète des vidéos</h3>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom du fichier</th>
+            <th>Lecture</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Vidéo 1</td>
+            <td><video controls><source src="1.mp4" type="video/mp4"></video></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Vidéo 2</td>
+            <td><video controls><source src="11.mp4" type="video/mp4"></video></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Vidéo 3</td>
+            <td><video controls><source src="111.mp4" type="video/mp4"></video></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoSelect = document.getElementById('videoSelect');
+
+    // Changer la vidéo principale depuis la liste déroulante
+    videoSelect.addEventListener('change', function() {
+        videoPlayer.src = this.value;
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+        videoPlayer.play();
+    });
+
+    // Empêche plusieurs vidéos de jouer en même temps
+    document.querySelectorAll('video').forEach(video => {
+        video.addEventListener('play', function() {
+            document.querySelectorAll('video').forEach(v => {
+                if(v !== this) v.pause();
+            });
+        });
+    });
+</script>
+
+<footer>
+    <p>© 2026 Projet Examen - Tous droits réservés</p>
+</footer>
+
+</body>
+</html>

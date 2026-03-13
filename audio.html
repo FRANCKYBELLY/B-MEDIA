@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUDIO - B-Media</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f2f5;
+        padding: 30px;
+        text-align: center;
+        margin: 0;
+    }
+    header, footer {
+        background-color: #0870f8;
+        color: white;
+        padding: 15px 0;
+    }
+    header .logo {
+        font-weight: bold;
+        font-size: 24px;
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    nav ul li a {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-weight: 500;
+      
+    }
+   
+    h2 {
+        color: #0d6efd;
+        margin-bottom: 20px;
+    }
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+    th {
+        background-color: #0d6efd;
+        color: white;
+    }
+    select {
+        padding: 8px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    audio {
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MonProjet</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="modules.html">Actions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<h2>Lecture Audio B-Media</h2>
+
+<label for="audioSelect">Sélectionnez un audio :</label><br>
+<select id="audioSelect">
+    <option value="0.mp3">AHW.mp3</option>
+    <option value="0002.mp3">TURARENZE.mp3</option>
+    <option value="00.mp3">100EFFETS.mp3</option>
+</select>
+
+<div style="margin-top:20px;">
+    <audio id="audioPlayer" controls>
+        <source src="0002.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio.
+    </audio>
+</div>
+
+<h3 style="margin-top:40px;">Liste complète des audios</h3>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom du fichier</th>
+            <th>Lecture</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>AHWII.mp3</td>
+            <td><audio controls><source src="0.mp3" type="audio/mpeg"></audio></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>TURARENZE.mp3</td>
+            <td><audio controls><source src="0002.mp3" type="audio/mpeg"></audio></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>100EFFETS.mp3</td>
+            <td><audio controls><source src="00.mp3" type="audio/mpeg"></audio></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioSelect = document.getElementById('audioSelect');
+
+    audioSelect.addEventListener('change', function() {
+        audioPlayer.src = this.value;
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+        audioPlayer.play();
+    });
+
+    document.querySelectorAll('audio').forEach(audio => {
+        audio.addEventListener('play', function() {
+            document.querySelectorAll('audio').forEach(a => {
+                if(a !== this) {
+                    a.pause();
+                }
+            });
+        });
+    });
+</script>
+
+<footer>
+    <p>© 2026 Projet Examen - Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

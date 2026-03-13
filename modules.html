@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plateforme Web - Accueil</title>
+
+<body>
+
+<header>
+<div class="container">
+<nav>
+<div class="logo">MonProjet</div>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<ul id="menu">
+<li><a href="index.html">Accueil</a></li>
+<li><a href="modules.html">Actions</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+</div>
+
+<style>
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;<div class="container">
+
+
+}
+
+body {
+    background: #e6e0d8;
+    color: #333;
+    line-height: 1.6;
+
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: #0d6efd;
+    color: white;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: #ffc107;
+}
+
+/* ===== MENU MOBILE ===== */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+/* ===== MODULES ===== */
+.modules {
+    padding: 100px 0 50px 0;
+    text-align: center;
+}
+
+.modules h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #0d6efd;
+}
+
+.module-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.module {
+    background: white;
+    padding: 25px;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.module h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    background: #0d6efd;
+    color: white;
+}
+
+.btn:hover {
+    background: #ffc107;
+    color: black;
+}
+
+/* ===== DESCRIPTION ===== */
+.description {
+    width: 80%;
+    margin: 40px auto;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #0d6efd;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .module-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+
+</header>
+
+
+
+<section class="modules" id="modules">
+<div class="container">
+<h2>Nos Actions</h2><BR></BR>
+<div class="module-container">
+
+    <div class="module">
+<h3>AUDIO</h3><br>
+
+<a href="audio.html" class="btn btn-primary">Accéder</a>
+</div>
+
+<div class="module">
+<h3>VIDEO</h3><br>
+<a href="video.html" class="btn btn-primary">Accéder</a>
+</div>
+
+<div class="module">
+<h3>GALERIE</h3><br>
+<a href="galerie.html" class="btn btn-primary">Accéder</a>
+</div>
+
+<div class="module">
+<h3>GAME</h3><br>
+
+<a href="game.html" class="btn btn-primary">Accéder</a>
+</div>
+
+</div>
+</div>
+</section>
+<p class="description">
+<b>B-Media</b> regroupe plusieurs services dans un seul espace digital pour offrir une expérience de divertissement complète.<br>
+Les utilisateurs peuvent accéder à : <b>des contenus audio et musicaux</b>,
+<b>des vidéos,une galerie d’images,</b> ainsi que 
+<b> des jeux vidéo interactifs.</b><br><br>
+</p>
+<br><br><br>
+<footer>
+<p>© 2026 Projet Examen - Tous droits réservés</p>
+</footer>
+
+<script>
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+</script>
+
+    
+</body>
+</html>

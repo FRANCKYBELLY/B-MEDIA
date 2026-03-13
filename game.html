@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Puzzle - B-Media</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f2f5;
+        text-align: center;
+        padding: 30px;
+    }
+    header, footer {
+        background-color: #0d6efd;
+        color: white;
+        padding: 15px 0;
+    }
+    header .logo {
+        font-weight: bold;
+        font-size: 24px;
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    h2 {
+        color: #0d6efd;
+        margin-bottom: 20px;
+    }
+    #puzzle-container {
+        width: 300px;
+        height: 300px;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2px;
+        border: 2px solid #0d6efd;
+    }
+    .tile {
+        width: 100px;
+        height: 100px;
+        background-size: 300px 300px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        transition: all 0.2s;
+    }
+    .empty {
+        background: #f0f2f5;
+        cursor: default;
+    }
+    button {
+        margin-top: 15px;
+        padding: 10px 15px;
+        font-size: 16px;
+        background-color: #0d6efd;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MonProjet</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="modules.html">Actions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<h2>Mini Puzzle B-Media</h2>
+<p>Cliquez sur une pièce adjacente à l’espace vide pour la déplacer.</p>
+
+<div id="puzzle-container"></div>
+<button onclick="shufflePuzzle()">Mélanger</button><br>
+
+<script>
+const container = document.getElementById('puzzle-container');
+let tiles = [];
+const size = 3; // 3x3
+const imageUrl = '2.jpg'; // Remplace par ton image
+
+// Créer le puzzle
+function createPuzzle() {
+    tiles = [];
+    container.innerHTML = '';
+    for (let i = 0; i < size*size; i++) {
+        const tile = document.createElement('div');
+        tile.classList.add('tile');
+        if (i === size*size - 1) {
+            tile.classList.add('empty');
+        } else {
+            tile.style.backgroundImage = `url(${imageUrl})`;
+            const row = Math.floor(i / size);
+            const col = i % size;
+            tile.style.backgroundPosition = `-${col*100}px -${row*100}px`;
+            tile.dataset.index = i;
+            tile.addEventListener('click', () => moveTile(i));
+        }
+        container.appendChild(tile);
+        tiles.push(tile);
+    }
+}
+
+function getEmptyIndex() {
+    return tiles.findIndex(t => t.classList.contains('empty'));
+}
+
+function moveTile(index) {
+    const emptyIndex = getEmptyIndex();
+    const validMoves = [
+        emptyIndex - 1,
+        emptyIndex + 1,
+        emptyIndex - size,
+        emptyIndex + size
+    ];
+    if (validMoves.includes(index)) {
+        container.insertBefore(tiles[index], tiles[emptyIndex]);
+        container.insertBefore(tiles[emptyIndex], tiles[index]);
+        tiles = Array.from(container.children);
+        checkWin();
+    }
+}
+
+function shufflePuzzle() {
+    for (let i = 0; i < 100; i++) {
+        const emptyIndex = getEmptyIndex();
+        const neighbors = [
+            emptyIndex - 1,
+            emptyIndex + 1,
+            emptyIndex - size,
+            emptyIndex + size
+        ].filter(n => n >= 0 && n < tiles.length);
+        const rand = neighbors[Math.floor(Math.random() * neighbors.length)];
+        moveTile(rand);
+    }
+}
+
+function checkWin() {
+    for (let i = 0; i < tiles.length - 1; i++) {
+        if (tiles[i].dataset.index != i) return;
+    }
+    alert("🎉 Félicitations ! Puzzle terminé !");
+}
+
+createPuzzle();
+</script>
+<br>
+
+<footer>
+    <p>© 2026 Projet Examen - Tous droits réservés</p>
+</footer>
+
+</body>
+</html>

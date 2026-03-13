@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plateforme Web - Accueil</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+}
+
+/* ===== HEADER ===== */
+header{
+    background:#0d6efd;
+    color:white;
+    padding:15px 0;
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    max-width:1200px;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav ul li{
+    margin-left:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#ffc107;
+}
+
+/* MENU MOBILE */
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* ===== HERO ===== */
+.hero{
+    height:100vh;
+    background:url(BMEDIA.png) no-repeat center center/cover;
+    backdrop-filter: blur(50px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding-top:80px;
+}
+
+.hero-content{
+    animation:fadeIn 2s ease-in-out;
+    
+}
+
+.hero h1{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.btn{
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:bold;
+    margin:10px;
+    transition:0.3s;
+}
+
+.btn-primary{
+    background:#ffc107;
+    color:black;
+}
+
+.btn-primary:hover{
+    background:white;
+}
+
+.btn-outline{
+    border:2px solid white;
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:#0d6efd;
+}
+
+/* ===== MODULES ===== */
+.modules{
+    padding:80px 0;
+    text-align:center;
+}
+
+.modules h2{
+    margin-bottom:40px;
+    font-size:32px;
+}
+
+.module-container{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.module{
+    background:white;
+    padding:30px;
+    margin:15px;
+    flex:1;
+    min-width:250px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.4s;
+}
+
+.module:hover{
+    transform:translateY(-10px);
+}
+
+/* ===== FOOTER ===== */
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+    nav ul{
+        display:none;
+        flex-direction:column;
+        background:#0d6efd;
+        position:absolute;
+        top:60px;
+        right:0;
+        width:200px;
+        padding:20px;
+    }
+
+    nav ul.active{
+        display:flex;
+        animation:fadeIn 0.5s ease-in-out;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .module-container{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<nav>
+<div class="logo">MonProjet</div>
+<ul id="menu">
+<li><a href="index.html">Accueil</a></li>
+<li><a href="modules.html">Actions</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Bienvenue sur <B>B-Media</B></h1>
+<p>Avec <b>B-Media</b>, nous voulons créer un espace où le divertissement et <br>
+ la technologie se rencontrent pour offrir une expérience immersive et attractive.</p>
+<a href="modules.html" class="btn btn-primary">Voir nos actions</a>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Projet Examen - Tous droits réservés</p>
+</footer>
+  
+<script>
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
