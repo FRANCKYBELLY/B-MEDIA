@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plateforme Web - Accueil</title>
+<title>B-MEDIA</title>
 
 <style>
 *{
@@ -75,8 +75,7 @@ nav ul li a:hover{
 /* ===== HERO ===== */
 .hero{
     height:100vh;
-    background:url(BMEDIA.png) no-repeat center center/cover;
-    backdrop-filter: blur(50px);
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('BMEDIA.png') no-repeat center center/cover;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -87,7 +86,7 @@ nav ul li a:hover{
 
 .hero-content{
     animation:fadeIn 2s ease-in-out;
-    
+    max-width: 90%;
 }
 
 .hero h1{
@@ -199,6 +198,14 @@ footer{
     .module-container{
         flex-direction:column;
     }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
 }
 </style>
 </head>
@@ -208,7 +215,8 @@ footer{
 <header>
 <div class="container">
 <nav>
-<div class="logo">MonProjet</div>
+<div class="logo">🎬 B-MEDIA</div>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 <ul id="menu">
 <li><a href="index.html">Accueil</a></li>
 <li><a href="modules.html">Actions</a></li>
@@ -220,9 +228,8 @@ footer{
 
 <section class="hero">
 <div class="hero-content">
-<h1>Bienvenue sur <B>B-Media</B></h1>
-<p>Avec <b>B-Media</b>, nous voulons créer un espace où le divertissement et <br>
- la technologie se rencontrent pour offrir une expérience immersive et attractive.</p>
+<h1>Bienvenue sur <b>B-Media</b></h1>
+<p>Avec <b>B-Media</b>, nous créons un espace où divertissement et technologie se rencontrent pour offrir une expérience immersive et attractive.</p>
 <a href="modules.html" class="btn btn-primary">Voir nos actions</a>
 </div>
 </section>
