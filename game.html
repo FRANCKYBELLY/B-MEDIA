@@ -10,33 +10,75 @@
         background-color: #f0f2f5;
         text-align: center;
         padding: 30px;
+        margin: 0;
     }
     header, footer {
         background-color: #0d6efd;
         color: white;
-        padding: 15px 0;
+        padding: 15px 20px;
     }
-    header .logo {
+
+    /* Barre principale header */
+    .top-bar {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .logo {
         font-weight: bold;
         font-size: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
+
+    .retour{
+        color:white;
+        text-decoration:none;
+        font-weight:bold;
+        background:#084298;
+        padding:6px 14px;
+        border-radius:6px;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    .retour:hover{
+        background:#052c65;
+        transform: scale(1.05);
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
     nav ul {
         list-style: none;
         padding: 0;
-        margin: 10px 0 0 0;
+        margin: 0;
         display: flex;
         justify-content: center;
         gap: 20px;
     }
+
     nav ul li a {
         color: white;
         text-decoration: none;
         font-weight: 500;
+        padding: 5px 12px;
+        border-radius: 5px;
+        transition: background 0.3s;
     }
+
+    nav ul li a:hover {
+        background: rgba(255,255,255,0.2);
+    }
+
     h2 {
         color: #0d6efd;
         margin-bottom: 20px;
     }
+
     #puzzle-container {
         width: 300px;
         height: 300px;
@@ -46,6 +88,7 @@
         grid-gap: 2px;
         border: 2px solid #0d6efd;
     }
+
     .tile {
         width: 100px;
         height: 100px;
@@ -54,10 +97,12 @@
         border: 1px solid #ccc;
         transition: all 0.2s;
     }
+
     .empty {
         background: #f0f2f5;
         cursor: default;
     }
+
     button {
         margin-top: 15px;
         padding: 10px 15px;
@@ -76,7 +121,11 @@
 <body>
 
 <header>
-    <div class="logo">MonProjet</div>
+    <div class="top-bar">
+        <div class="logo">🎬 B-MEDIA</div>
+        <a class="retour" href="modules.html">⬅ RETOUR</a>
+    </div>
+
     <nav>
         <ul>
             <li><a href="index.html">Accueil</a></li>
